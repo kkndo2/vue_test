@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script type="text/javascript" src="/js/vue.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+
+<h1>vue.js , uikit 테스트</h1>
+
+<div id="app">
+    <strong v-once>{{msg}} {{ message }}</strong>
+    <hr />
+    <strong v-html>{{msg}} {{ message }}</strong>
+    <strong v-html="rawHtml"></strong>
+    <strong> {{ rawHtml }} </strong>
+    <hr />
+
+    {{1-2}}
+
+    <strong v-bind:id="'id_'+did">did</strong>
+
+    <hr>
+    <strong v-if="seen">IF STRONG</strong>
+    <strong v-if="seen_str==='aaa'">IF STRONG</strong>
+
+    <hr>
+
+    first : <strong>{{first}}</strong><br>
+    last : <strong>{{last}}</strong><br>
+    full : <strong>{{full}}</strong><br>
+
+    <input type="text" v-model="question" />
+</div>
+
+<script type="text/javascript">
+
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message : '안녕하세요 Vue!',
+            msg: '111',
+            rawHtml: '<a>bbb</a>',
+            did: 'iaaaaaa',
+            seen : true,
+            seen_str : 'aa',
+            first : 'sangcheol',
+            last : 'lee',
+            question : 'q'
+
+        },
+        computed: {
+            full: function(){
+                return this.first+ '/'+this.last;
+            }//end full
+        },
+        watch: {
+            question: function(){
+                console.log('감시중');
+            }
+        }
+    });
+
+</script>
+
+
+</body>
+</html>

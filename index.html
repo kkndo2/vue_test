@@ -66,6 +66,16 @@
     dd
 </ol>
 
+<h2>app7</h2>
+<div id="app-7">
+    <ol>
+        <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+    </ol>
+    <ol>
+        <todo-item v-bind:todo="aaa"></todo-item>
+    </ol>
+</div>
+
 <script type="text/javascript">
 
 
@@ -123,10 +133,24 @@
 
     // todo-item 이름을 가진 컴포넌트를 정의합니다
     Vue.component('todo-item', {
-        template: '<li>할일 항목 하나입니다.</li>'
+        template: '<li>{{ todo.text }}</li>',
+        props: ['todo']
     });
     var app_component=new Vue({
         el: '#app_component'
+    });
+
+    var app7=new Vue({
+        el: '#app-7',
+        data: {
+            'groceryList': [
+                { text: '채소' },
+                { text: '치즈' },
+                { text: '과자' }
+            ],
+            aaa: { text: 'ㅇㅇㅇ' }
+
+        }
     });
 </script>
 
